@@ -1,7 +1,7 @@
 import math
 
 
-def enterRationFun(nameRation):
+def get_value(nameRation):
     while True:
         try:
             value = float(input(f"Enter ration {nameRation}: "))
@@ -10,27 +10,36 @@ def enterRationFun(nameRation):
             print(ex)
     return value
 
-def findDiskcriminant(a,b,c):
-    diskriminant = math.pow(b,2) - 4*a*c
-    return diskriminant
 
-def findTheRoots(a,b,disckriminant):
-    if(disckriminant>0):
-        x1= (-b+math.sqrt(disckriminant))/2/a
-        x2=(-b-math.sqrt(disckriminant))/2/a
-        print("x1 = ",x1," x2 = ",x2)
-    if(disckriminant == 0):
-        x=(-b)/2/a
-        print("x = ",x)
-    if(disckriminant < 0):
-        print("no roots")
+def calculate_diskriminant(a,b,c):
+    return math.pow(b,2) - 4*a*c
+
+
+def calculate_result(a,b,diskriminant):
+    result_list=[]
+    if(diskriminant>0):
+        result_list.append((-b+math.sqrt(diskriminant))/2/a)
+        result_list.append((-b-math.sqrt(diskriminant))/2/a)
+
+    if(diskriminant == 0):
+        result_list.append((-b)/2/a)
+
+    return result_list
+
+def show_result(result_list):
+    if len(result_list) == 0:
+        print("no solutions")
+    else:
+        for i in range(len(result_list)):
+            print(f"x{i+1} = {result_list[i]}")
+
 
 def main():
-    a = enterRationFun("a")
-    b = enterRationFun("b")
-    c = enterRationFun("c")
-    diskcriminant= findDiskcriminant(a,b,c)
-    findTheRoots(a,b,diskcriminant)
+    a = get_value("a")
+    b = get_value("b")
+    c = get_value("c")
+    diskriminant= calculate_diskriminant(a,b,c)
+    show_result(calculate_result(a,b,diskriminant))
 
 
 
