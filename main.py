@@ -1,10 +1,10 @@
 import math
 
 
-def get_value(nameRation):
+def get_value(name_ration):
     while True:
         try:
-            value = float(input(f"Enter ration {nameRation}: "))
+            value = float(input(f"Enter ration {name_ration}: "))
             break
         except ValueError as ex:
             print(ex)
